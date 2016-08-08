@@ -2,9 +2,25 @@ import com.tekdays.*
 
 class BootStrap {
     def init = { servletContext ->
+
+        new TekUser(fullName: 'John Doe',
+                userName: 'jdoe',
+                password: 't0ps3cr3t',
+                email: 'jdoe@johnsgroovyshop.com',
+                website: 'blog.johnsgroovyshop.com',
+                bio: '''John has been programming for over 40 years. He has worked with every programming language known to man
+                and has settled on Groovy. In his spare time, John dabbles in astro physics and plays shuffleboard.''').save()
+
+        new TekUser(fullName: 'John Deere',
+                userName: 'tractorman',
+                password: 't0ps3cr3t',
+                email: 'john.deere@porkproducers.org',
+                website: 'www.perl.porkproducers.org',
+                bio: '''John is a top notch Perl programmer and a pretty good hand around the farm. If he can't program it he can plow it!''').save()
+
         def event1 = new TekEvent(name: 'Gateway Code Camp',
                 city: 'Saint Louis, MO',
-                organizer: 'John Doe',
+                organizer: TekUser.findByFullName('John Doe'),
                 venue: 'TBD',
                 startDate: new Date('11/21/2013'),
                 endDate: new Date('11/21/2013'),
@@ -17,9 +33,10 @@ class BootStrap {
                 println "An error occured with event1: ${error}"
             }
         }
+
         def event2 = new TekEvent(name: 'Perl Before Swine',
                 city: 'Austin, MN',
-                organizer: 'John Deere',
+                organizer: TekUser.findByFullName('John Deere'),
                 venue: 'SPAM Museum',
                 startDate: new Date('11/2/2013'),
                 endDate: new Date('11/2/2013'),
@@ -33,6 +50,7 @@ class BootStrap {
                 println "An error occured with event2: ${error}"
             }
         }
+
     }
     def destroy = {
     }

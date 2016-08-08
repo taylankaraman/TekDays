@@ -4,7 +4,7 @@ class TekEvent {
 
     String city
     String name
-    String organizer
+    TekUser organizer
     String venue
     Date startDate
     Date endDate
@@ -15,5 +15,12 @@ class TekEvent {
     }
 
     static constraints = {
+        name()
+        city()
+        description maxSize: 5000
+        organizer()
+        venue()
+        startDate()
+        endDate()
     }
 }

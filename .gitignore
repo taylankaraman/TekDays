@@ -1,0 +1,6 @@
+.slcache
+/out/
+/target/
+
+# web application files
+/web-app/WEB-INF/classes
